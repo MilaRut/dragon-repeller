@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'Vinque Rg';
+    src: url('./fonts/VinqueRg-Regular.woff2') format('woff2'),
+        url('./fonts/VinqueRg-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    background-color: #0a0a23;
+    background-image: url("./img/square.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Vinque Rg', 'Times New Roman', Times, serif, sans-serif;
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px;
+  }
+
+  button {
+    font-family: 'Vinque Rg', 'Times New Roman', Times, serif, sans-serif;
+    cursor: pointer;
+    color: #ffe3b9;
+    background-color: #feac32;
+    background-image: linear-gradient(#77590d, #533302);
+    border: 3px solid #442901;
+    margin: 5px 2px;
+    padding: 0 5px;
+  }
+  
+  #text {
+    color: #000000;
+    padding: 10px;
+}
+
+#game {
+    position: relative;
+    background: url("./img/game-bg.png") center;
+    background-size: contain;
+    background-repeat: repeat-x;
+    width: 100%;
+    max-width: 800px;
+    max-height: 500px;
+    color: #ffffff;
+    margin: auto auto 50px;
+    padding: 10px;
+  }
+
+  #game::before,
+  #game::after {
+      position: absolute;
+      content: "";
+      width: 100px;
+      height: 160%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: url("./img/side.png") center no-repeat;
+      background-size: contain;
+      pointer-events: none;
+    }
+    
+    #game::before {
+      left: -60px;
+  }
+
+  #game::after {
+    right: -60px;
+  }
+
+@media screen and (max-width: 767px) {
+  #game {
+    background-size: cover;
+   }    
+
+   #game::before,
+   #game::after {
+    display: none;
+   }
+}
+  
+  #controls,
+  #stats {
+    border: 1px solid #0a0a23;
+    padding: 5px;
+    color: #0a0a23;
+  }
+  
+  #monsterStats {
+    display: none;
+    border: 1px solid #0a0a23;
+    padding: 5px;
+    color: #ffffff;
+    background-color: #c70d0d;
+  }
+  
+  .stat {
+    padding-right: 10px;
+  }
