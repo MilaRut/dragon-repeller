@@ -52,7 +52,7 @@ body {
     max-height: 500px;
     color: #ffffff;
     margin: auto auto 50px;
-    padding: 10px;
+    padding: 20px;
   }
 
   #game::before,
@@ -68,7 +68,7 @@ body {
       pointer-events: none;
     }
     
-    #game::before {
+  #game::before {
       left: -60px;
   }
 
@@ -76,17 +76,6 @@ body {
     right: -60px;
   }
 
-@media screen and (max-width: 767px) {
-  #game {
-    background-size: cover;
-   }    
-
-   #game::before,
-   #game::after {
-    display: none;
-   }
-}
-  
   #controls,
   #stats {
     border: 1px solid #0a0a23;
@@ -104,4 +93,110 @@ body {
   
   .stat {
     padding-right: 10px;
+  }
+
+  .modal {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url("./img/game-bg.png") center;
+    background-size: contain;
+    background-repeat: repeat-x;
+    width: 100%;
+    max-width: 800px;
+    max-height: 500px;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .modal.active {
+    display: block;
+  }
+
+  .modal p,
+  .modal a {
+    color: #000000;
+  }
+
+  .modal p {
+    margin-bottom: 10px;
+  }
+
+  .modal::before,
+  .modal::after {
+      position: absolute;
+      content: "";
+      width: 100px;
+      height: 160%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: url("./img/side.png") center no-repeat;
+      background-size: contain;
+      pointer-events: none;
+    }
+    
+  .modal::before {
+      left: -60px;
+  }
+
+  .modal::after {
+    right: -60px;
+  }
+
+  .music-toggle,
+  .modal-toggle {
+    position: absolute;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 40;
+  }
+
+  .music-toggle {
+    bottom: 80px;
+  }
+
+  .modal-toggle {
+    bottom: 20px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .music-toggle {
+      bottom: auto;
+      top: 20px;
+      right: 80px;
+    }
+    .modal-toggle {
+      bottom: auto;
+      top: 20px;
+      right: 20px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    #game,
+    .modal {
+      background-size: cover;
+     }   
+
+     #game {
+      margin: auto auto 10px;
+     }
+     
+     .modal {
+      width: 95%;
+      top: 100px;
+      transform: translate(-50%, 0);
+     }
+  
+     .modal::before,
+     .modal::after,
+     #game::before,
+     #game::after {
+      display: none;
+     }
   }

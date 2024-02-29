@@ -64,7 +64,7 @@ const locations = [
   },
   {
     name: "fight",
-    image: ["url('./img/slime.jpg')", "url('./img/beast.jpg')","url('./img/dragon.jpg')"],
+    image: ["url('./img/slime.jpg')", "url('./img/beast.jpg')", "url('./img/dragon.jpg')"],
     "button text": ["Атаковать", "Уклониться", "Сбежать (позорно)"],
     "button functions": [attack, dodge, goTown],
     text: "Битва с монстром началась."
@@ -83,12 +83,12 @@ const locations = [
     "button functions": [restart, restart, restart],
     text: "Ты мертв (лох). &#x2620;"
   },
-  { 
-    name: "win", 
+  {
+    name: "win",
     image: "url('./img/win.jpg')",
-    "button text": ["ЗАНОВО?", "ЗАНОВО?", "ЗАНОВО?"], 
-    "button functions": [restart, restart, restart], 
-    text: "Ты сразил дракона! ТЫ ПОБЕДИЛ В ИГРЕ! Красава! &#x1F389;" 
+    "button text": ["ЗАНОВО?", "ЗАНОВО?", "ЗАНОВО?"],
+    "button functions": [restart, restart, restart],
+    text: "Ты сразил дракона! ТЫ ПОБЕДИЛ В ИГРЕ! Красава! &#x1F389;"
   },
   {
     name: "easter egg",
@@ -204,7 +204,7 @@ function attack() {
   text.innerText += " Ты взял свой " + weapons[currentWeapon].name + " и атакуешь.";
   health -= getMonsterAttackValue(monsters[fighting].level);
   if (isMonsterHit()) {
-    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;    
+    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
   } else {
     text.innerText += " Ты промазал (лох).";
   }
@@ -304,3 +304,22 @@ function pick(guess) {
     }
   }
 }
+
+function soundClick() {
+  var audio = document.getElementById('audio');
+  if (!audio.paused) {
+    audio.pause();
+  } else {
+    audio.play();
+  }
+}
+
+const musicToggle = document.querySelector('.music-toggle');
+  musicToggle.addEventListener('click', () => {
+  soundClick();
+})
+
+const modalBtn = document.querySelector('.modal-toggle');
+modalBtn.addEventListener('click', () => {
+  document.querySelector('.modal').classList.toggle('active');
+})
