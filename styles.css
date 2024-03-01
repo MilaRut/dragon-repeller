@@ -11,6 +11,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    user-select: none;
 }
 
 body {
@@ -146,27 +147,84 @@ body {
     right: -60px;
   }
 
-  .music-toggle,
-  .modal-toggle {
+  /* BUTTONS */
+
+  .round-btn {
     position: absolute;
-    right: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    font-size: 24px;
     line-height: normal;
   }
 
-  .music-toggle {
-    bottom: 80px;
+  .open-music-menu {
+    z-index: 10;
+  }
+
+  .music-controls,
+  .open-music-menu {
+    font-size: 18px;
   }
 
   .modal-toggle {
     bottom: 20px;
+    right: 20px;
+    font-size: 24px;
   }
+
+  .music-controls,
+  .open-music-menu {
+    position: absolute;
+    bottom: 80px;
+    right: 20px;
+  }
+
+  .music-controls {
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .music-controls.active {
+    z-index: 1;
+    pointer-events: all;
+    bottom: 120px;
+  }
+
+  .music-toggle {
+    transition: all 0.3s ease-in;
+  }
+
+  .music-toggle.active {
+    transform: translate(-10px, 0px);
+    transition: all 0.3s ease-in;
+  }
+
+  .plus-volume {
+    transition: all 0.5s ease-in;
+  }
+
+  .plus-volume.active {
+    transform: translate(-40px, 28px);
+    transition: all 0.5s ease-in;
+  }
+  
+  .minus-volume {
+    transition: all 0.7s ease-in;
+  }
+
+  .minus-volume.active {
+    transform: translate(-30px, 70px);
+    transition: all 0.7s ease-in;
+  }
+
+  .pause {
+    display: none;
+    font-size: 14px;
+  }
+
 
   @media screen and (max-width: 1024px) {
     .music-toggle {

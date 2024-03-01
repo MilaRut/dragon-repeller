@@ -305,12 +305,40 @@ function pick(guess) {
   }
 }
 
+const music = document.querySelector('#music');
+const plusVolume = document.querySelector('.plus-volume');
+const minusVolume = document.querySelector('.minus-volume');
+let volume = 5;
+
+plusVolume.addEventListener('click', () => {
+  if (volume < 10) {
+    volume++;
+    music.volume = volume / 10;
+  } else {
+    return false;
+  }
+  console.log(music.volume);
+})
+
+minusVolume.addEventListener('click', () => {
+  if (volume > 1) {
+    volume--;
+    music.volume = volume / 10;
+  } else {
+    return false;
+  }
+  console.log(music.volume);
+})
+
 function soundClick() {
-  const music = document.querySelector('#music');
   if (!music.paused) {
     music.pause();
+    document.querySelector('.pause').style.display = 'none';
+    document.querySelector('.play').style.display = 'block';
   } else {
     music.play();
+    document.querySelector('.play').style.display = 'none';
+    document.querySelector('.pause').style.display = 'block';
   }
 }
 
@@ -333,5 +361,13 @@ const allBtns = document.querySelectorAll('.click');
 allBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     clickBtn();
+  })
+})
+
+const musicMenu = document.querySelector('.open-music-menu');
+const controls = document.querySelectorAll('.music-controls')
+musicMenu.addEventListener('click', () => {
+  controls.forEach((control) => {
+    control.classList.toggle('active');
   })
 })
