@@ -334,11 +334,11 @@ function soundClick() {
   if (!music.paused) {
     music.pause();
     document.querySelector('.pause').style.display = 'none';
-    document.querySelector('.play').style.display = 'block';
+    document.querySelector('.play').style.display = 'flex';
   } else {
     music.play();
     document.querySelector('.play').style.display = 'none';
-    document.querySelector('.pause').style.display = 'block';
+    document.querySelector('.pause').style.display = 'flex';
   }
 }
 

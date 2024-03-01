@@ -161,6 +161,12 @@ body {
     line-height: normal;
   }
 
+  .round-btn span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .open-music-menu {
     z-index: 10;
   }
