@@ -310,11 +310,6 @@ const plusVolume = document.querySelector('.plus-volume');
 const minusVolume = document.querySelector('.minus-volume');
 let volume = 5;
 
-window.addEventListener('DOMContentLoaded', () => {
-  music.volume = 0.5;
-  music.play();
-})
-
 plusVolume.addEventListener('click', () => {
   if (volume < 10) {
     volume++;
