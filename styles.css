@@ -12,6 +12,7 @@
     margin: 0;
     box-sizing: border-box;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -227,11 +228,25 @@ body {
 
 
   @media screen and (max-width: 1024px) {
-    .music-toggle {
+    .music-controls,
+    .open-music-menu {
       bottom: auto;
       top: 20px;
       right: 80px;
     }
+
+    .music-toggle.active {
+      transform: translate(-45px, -10px);
+    }
+
+    .plus-volume.active {
+      transform: translate(-35px, 35px);
+    }
+
+    .minus-volume.active {
+      transform: translate(10px, 45px);
+    }
+
     .modal-toggle {
       bottom: auto;
       top: 20px;
