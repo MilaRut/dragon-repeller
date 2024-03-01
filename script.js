@@ -306,20 +306,32 @@ function pick(guess) {
 }
 
 function soundClick() {
-  var audio = document.getElementById('audio');
-  if (!audio.paused) {
-    audio.pause();
+  const music = document.querySelector('#music');
+  if (!music.paused) {
+    music.pause();
   } else {
-    audio.play();
+    music.play();
   }
 }
 
 const musicToggle = document.querySelector('.music-toggle');
-  musicToggle.addEventListener('click', () => {
+musicToggle.addEventListener('click', () => {
   soundClick();
 })
 
 const modalBtn = document.querySelector('.modal-toggle');
 modalBtn.addEventListener('click', () => {
   document.querySelector('.modal').classList.toggle('active');
+})
+
+function clickBtn() {
+  const btnClick = document.querySelector('#button-click');
+  btnClick.play();
+}
+
+const allBtns = document.querySelectorAll('.click');
+allBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    clickBtn();
+  })
 })

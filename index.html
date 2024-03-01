@@ -16,9 +16,9 @@
             <span class="stat">Голда: <strong><span id="goldText">50</span></strong></span>
         </div>
         <div id="controls">
-            <button id="button1">В лавку</button>
-            <button id="button2">В пещеру</button>
-            <button id="button3">Бить дракона!</button>
+            <button id="button1" class="click">В лавку</button>
+            <button id="button2" class="click">В пещеру</button>
+            <button id="button3" class="click">Бить дракона!</button>
         </div>
         <div id="monsterStats">
             <span class="stat">Монстр: <strong><span id="monsterName"></span></strong></span>
@@ -30,8 +30,9 @@
         </div>
     </div>
     <button type="button" class="music-toggle" title="Включить/выключить музыку">&#9834;</button>
-    <button type="button" class="modal-toggle" title="Информация об игре">?</button>
-    <audio id="audio" loop autoplay src="https://raw.githubusercontent.com/MilaRut/dragon-repeller/main/audio/music.mp3"></audio>
+    <button type="button" class="modal-toggle click" title="Информация об игре">?</button>
+    <audio id="music" loop autoplay src="https://raw.githubusercontent.com/MilaRut/dragon-repeller/main/audio/music.mp3"></audio>
+    <audio id="button-click" src="https://raw.githubusercontent.com/MilaRut/dragon-repeller/main/audio/click.mp3"></audio>
     <div class="modal">
         <p>The game is based on the tutorial on <a target="_blank" rel="noopener noreferrer" href="https://www.freecodecamp.org/">freecodecamp.org</a> for demo
             purposes.</p>
