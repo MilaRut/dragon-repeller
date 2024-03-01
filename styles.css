@@ -32,15 +32,29 @@ body {
     font-family: 'Vinque Rg', 'Times New Roman', Times, serif, sans-serif;
     cursor: pointer;
     color: #ffe3b9;
-    background-color: #feac32;
-    background-image: linear-gradient(#77590d, #533302);
-    border: 3px solid #442901;
+    background: #3b2400 url("./img/button-wood.jpg");
+    box-shadow:
+    0 1px 3px rgb(86,38,6),
+    0 5px 7px rgba(0,0,0,0.4),
+    inset 0 1px rgba(255,255,255,0.3),
+    inset 0 0 4px rgba(255,255,255,0.5);
+    border: 1px solid #442901;
     margin: 5px 2px;
     padding: 0 5px;
+    text-shadow: 2px 1px 0px #533302;
+  }
+
+  button:active {
+    box-shadow:
+    0 0px 0px rgb(86,38,6),
+    0 4px 5px rgba(0,0,0,0.4),
+    inset 0 1px rgba(0,0,0,0.6),
+    inset 0 0 4px rgba(0,0,0,0.5)
   }
   
   #text {
     color: #000000;
+    text-shadow: 1px 0px 0px #d2a45e;
     padding: 10px;
 }
 
@@ -83,6 +97,14 @@ body {
     border: 1px solid #0a0a23;
     padding: 5px;
     color: #0a0a23;
+  }
+
+  #stats span {
+    text-shadow: 1px 0px 0px #f8d49d;
+  }
+
+  #controls button {
+    padding: 4px 5px;
   }
   
   #monsterStats {
@@ -159,12 +181,19 @@ body {
     height: 40px;
     border-radius: 50%;
     line-height: normal;
+    padding: 8px;
   }
 
   .round-btn span {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .round-btn img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 
   .open-music-menu {
@@ -192,44 +221,50 @@ body {
   .music-controls {
     z-index: -1;
     pointer-events: none;
+    opacity: 0;
   }
 
   .music-controls.active {
     z-index: 1;
     pointer-events: all;
     bottom: 120px;
+    opacity: 1;
   }
 
   .music-toggle {
-    transition: all 0.3s ease-in;
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
   }
 
   .music-toggle.active {
     transform: translate(-10px, 0px);
-    transition: all 0.3s ease-in;
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
   }
 
   .plus-volume {
-    transition: all 0.5s ease-in;
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
   }
 
   .plus-volume.active {
     transform: translate(-40px, 28px);
-    transition: all 0.5s ease-in;
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
   }
   
   .minus-volume {
-    transition: all 0.7s ease-in;
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
   }
 
   .minus-volume.active {
     transform: translate(-30px, 70px);
-    transition: all 0.7s ease-in;
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
   }
 
   .pause {
     display: none;
     font-size: 14px;
+  }
+
+  .play {
+    margin-left: 4px;
   }
 
 
