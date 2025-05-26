@@ -2,69 +2,234 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dragon repeller game</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
-    <link rel="manifest" href="./site.webmanifest">
-    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dedragonization Game</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dedragonization Game">
+  <meta property="og:description"
+    content="Игра, в которой тебе предстоит сразиться с ужасным драконом и освободить жителей города. Бей монстров, покупай оружие, прокачивайся для главной битвы! Надеемся, ты выживешь (но это не точно). В игре встречается пассивная агрессия и немного отсылок ко всякому там. Enjoy!">
+  <meta property="og:url" content="https://rolling-scopes-school.github.io/milarut-JSFEPRESCHOOL2024Q2/random-game/">
+  <meta property="og:image"
+    content="https://rolling-scopes-school.github.io/milarut-JSFEPRESCHOOL2024Q2/random-game/img/dragon.jpg">
+  <meta property="og:site_name" content="Dedragonization Game">
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <div id="game">
+  <div class="wrapper">
+    <main>
+      <div id="game">
         <div id="stats">
-            <span class="stat">Опыт: <strong><span id="xpText">0</span></strong></span>
-            <span class="stat">Здоровье: <strong><span id="healthText">100</span></strong></span>
-            <span class="stat">Голда: <strong><span id="goldText">50</span></strong></span>
+          <span class="stat">Опыт: <strong><span id="xpText">0</span></strong></span>
+          <span class="stat">Здоровье: <strong><span id="healthText">100</span></strong></span>
+          <span class="stat">Голда: <strong><span id="goldText">50</span></strong></span>
         </div>
         <div id="controls">
-            <button id="button1" class="click">В лавку</button>
-            <button id="button2" class="click">В пещеру</button>
-            <button id="button3" class="click">Бить дракона!</button>
+          <button id="button1" class="click">В лавку</button>
+          <button id="button2" class="click">В пещеру</button>
+          <button id="button3" class="click">Бить дракона!</button>
+          <p class="inventory">Твое оружие: <span class="weapon">дрын</span></p>
         </div>
         <div id="monsterStats">
-            <span class="stat">Монстр: <strong><span id="monsterName"></span></strong></span>
-            <span class="stat">Здоровье: <strong><span id="monsterHealth"></span></strong></span>
+          <span class="stat">Монстр: <strong><span id="monsterName"></span></strong></span>
+          <span class="stat">Здоровье: <strong><span id="monsterHealth"></span></strong></span>
         </div>
         <div id="text">
-            Добро пожаловать в Отпугиватель драконов. Ты должен победить ужасного дракона, который не дает людям
-            покинуть город. Ты находишься на городской площади. Куда ты хочешь пойти? Используй кнопки выше.
+          Ты находишься на городской площади. Ты видишь вывеску "Лавка" и два указателя
+          "⇐ Пещера там" и "Не влезай, убьет(дракон) ⇒". Куда ты направишься? Используй кнопки выше.
         </div>
-    </div>
-
-    <button type="button" class="round-btn open-music-menu click" title="Открыть/закрыть музыкальное меню">
+      </div>
+      <button type="button" class="round-btn open-music-menu click" title="Музыкальное меню">
         <img src="./img/note.svg" alt="">
-    </button>
-    <button type="button" class="round-btn music-controls music-toggle click" title="Включить/выключить музыку">
+      </button>
+      <button type="button" class="round-btn mute click" title="Отключить звук кнопок">
+        <img class="icon-mute" src="./img/mute.svg" alt="">
+        <img class="icon-unmute" src="./img/unmute.svg" alt="">
+      </button>
+      <button type="button" class="round-btn music-controls music-toggle click" title="Включить музыку">
         <img class="play" src="./img/play.svg" alt="">
         <img class="pause" src="./img/pause.svg" alt="">
-    </button>
-    <button type="button" class="round-btn music-controls plus-volume click" title="Сделать громче">
-        <img src="./img/plus.svg" alt="">
-    </button>
-    <button type="button" class="round-btn music-controls minus-volume click" title="Сделать тише">
-        <img src="./img/minus.svg" alt=""> </button>
-    <button type="button" class="round-btn modal-toggle click" title="Информация об игре">?</button>
+      </button>
+      <button type="button" class="round-btn music-controls plus-volume click" title="Сделать громче">
+        <img src="./img/plus.svg" width="32" height="32" alt="">
+      </button>
+      <button type="button" class="round-btn music-controls minus-volume click" title="Сделать тише">
+        <img src="./img/minus.svg" width="32" height="32" alt="">
+      </button>
+      <button type="button" class="round-btn open-results-table click" data-open-modal data-modal-id="#table"
+        title="Таблица результатов">
+        <img src="./img/cup.svg" width="32" height="32" alt="">
+      </button>
+      <button type="button" class="round-btn open-inventory click" data-open-modal data-modal-id="#inventory"
+        title="Инвентарь">
+        <img src="./img/inventory.svg" width="32" height="32" alt="">
+      </button>
+      <button type="button" class="round-btn modal-toggle click" title="Информация об игре" data-open-modal
+        data-modal-id="#info">?</button>
+      <audio id="music" loop src="./audio/music.mp3"></audio>
+      <audio id="button-click" src="./audio/click.mp3"></audio>
+    </main>
+    <footer class="footer">
+      <ul class="footer__list">
+        <li class="footer__item">
+          <a href="https://github.com/MilaRut" class="footer__link">
+            <img class="footer__img" src="./img/github-white.svg" width="40" height="40" alt="GitHub.">
+          </a>
+        </li>
+        <li class="footer__item">
+          <a href="https://rs.school/courses/javascript-preschool-ru" class="footer__link">
+            <div class="footer__img-wrapper">
+              <img class="footer__img" src="./img/rss-logo.svg" width="40" height="40" alt="RS School.">
+            </div>
+          </a>
+        </li>
+        <li class="footer__item">
+          <p class="footer__date">2024</p>
+        </li>
+      </ul>
+    </footer>
+  </div>
 
-    <audio id="music" loop src="https://raw.githubusercontent.com/MilaRut/dragon-repeller/main/audio/music.mp3"></audio>
-    <audio id="button-click"
-        src="https://raw.githubusercontent.com/MilaRut/dragon-repeller/main/audio/click.mp3"></audio>
-    <div class="modal">
-        <p>The game is based on the tutorial on <a target="_blank" rel="noopener noreferrer"
-                href="https://www.freecodecamp.org/">freecodecamp.org</a>.</p>
-        <p>Created by <a target="_blank" rel="noopener noreferrer" href="https://github.com/MilaRut/">Mila Rut</a>  for demo
-            purposes (and fun:).</p>
-        <p>Music generated by <a target="_blank" rel="noopener noreferrer" href="https://mubert.com/render">Mubert</a>
-        </p>
-        <p>Images generated by <a target="_blank" rel="noopener noreferrer"
-                href="https://creator.nightcafe.studio/">NightCafe</a></p>
+  <div class="hints">
+    <div class="hints__image">
+      <img src="./img/hint-start.png" width="500" height="500" alt="">
     </div>
-    <script src="./script.js"></script>
+    <div class="hints__controls">
+      <p>Подсказать что-нибудь?<br>Нужна подсказка?</p>
+      <button type="button" class="hints__btn hints__btn--yes click">Да</button>
+      <button type="button" class="hints__btn hints__btn--no click">Нет</button>
+    </div>
+  </div>
+
+  <div class="hints-display">
+    <div class="hints-display__image">
+      <img src="./img/hint-full.png" width="500" height="500" alt="">
+      <button type="button" class="hints-display__btn hints-display__btn--1" data-id="#hint-1"><span>?</span></button>
+      <button type="button" class="hints-display__btn hints-display__btn--2" data-id="#hint-2"><span>?</span></button>
+      <button type="button" class="hints-display__btn hints-display__btn--3" data-id="#hint-3"><span>?</span></button>
+      <button type="button" class="hints-display__btn hints-display__btn--4" data-id="#hint-4"><span>?</span></button>
+      <button type="button" class="close-hint"></button>
+    </div>
+    <div class="hints-display__texts">
+      <span id="hint-1">Начинай с самого слабого монстра: сначала прокачайся, заработай очки опыта и голду, а когда
+        станешь опытным и матерым, да еще обзаведешься хорошим оружием, вот тогда можно и на дракона идти</span>
+      <span id="hint-2">Мало голды? После битвы с монстром попытай счастья в секретном казино. Как туда попасть? Не
+        помню, милок, старый я уже, память подводит, но где-то по пути в город</span>
+      <span id="hint-3">Оружие в лавке конечно из гнили, ломается часто. Только вот мечи там хорошие. На них еще и
+        заклинание наложено: если это единственное твое оружие, то меч ни за что не сломается</span>
+      <span id="hint-4">Продам гараж</span>
+    </div>
+  </div>
+
+  <div class="modal start active" id="start">
+    <div class="modal__content start-screen">
+      <span>Добро пожаловать в игру "Разракония". Ты должен победить ужасного дракона, который терроризирует целый
+        город. Назовись, воин, и отправляйся на подвиги, чтобы покрыть себя славой на века! Да пребудет с тобой сила!
+        Ты непременно справишься (но это не точно)!</span>
+      <form>
+        <input type="text" id="username" placeholder="Ваше имя">
+        <button type="submit" class="start-btn click">Вперёд!</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal info" id="info" data-close-modal>
+    <div class="modal__content">
+      <p>Created by <a target="_blank" rel="noopener noreferrer" href="https://github.com/MilaRut/">Mila Rut</a> for
+        demo purposes (and fun:).</p>
+      <p>Music generated using <a target="_blank" rel="noopener noreferrer" href="https://mubert.com/render">Mubert</a>
+      </p>
+      <p>Images generated using <a target="_blank" rel="noopener noreferrer"
+          href="https://creator.nightcafe.studio/">NightCafe</a></p>
+    </div>
+  </div>
+
+  <div class="modal inventory" id="inventory" data-close-modal>
+    <div class="modal__content">
+      <div class="inventory__content">
+        <h2>Инвентарь</h2>
+        <div class="inventory__items"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal table" id="table" data-close-modal>
+    <div class="modal__content">
+      <p>Таблица результатов</p>
+      <table>
+        <tr>
+          <th>Имя</th>
+          <th>Боев</th>
+          <th>Опыт</th>
+          <th>Результат</th>
+        </tr>
+        <tr class="row">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr class="row">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr class="row">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr class="row">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr class="row">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr class="row">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr class="row">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr class="row">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr class="row">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr class="row">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
 </body>
 
 </html>
